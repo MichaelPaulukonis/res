@@ -287,6 +287,7 @@ let Home = () => {
       }
 
       // cut up original image
+      // and calculate complexity
       let tiles = []
       for (let i = 0; i < cells; i++) {
         let t = document.createElement('canvas')
@@ -391,7 +392,8 @@ let Home = () => {
     // img.src = 'veilance.jpg'
     // img.src = 'mccabe.jpg'
     // img.src = 'compute.png'
-    loadImage('mrrobot2.jpg')
+    // loadImage('mrrobot2.jpg')
+    loadImage('acronym.jpg')
   }, [])
 
   function clickSetThreshold(x) {
@@ -410,8 +412,10 @@ let Home = () => {
     let rp = rpref.current
 
     let { img, tiles, cols, rows, cells, threshold } = state_ref.current
+    // img is the original, complex image
     cx.drawImage(img, 0, 0, img.width, img.height)
 
+    // we're drawing the SIMPLE tiles, here. weird.
     for (let i = threshold; i < cells; i++) {
       let tile = tiles[i]
       let x = tile.x
